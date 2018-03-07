@@ -6,7 +6,7 @@ public class MultiThreading {
 		while(true) {
 			try {
 				Thread.sleep(500);
-				System.out.println("ÀÛ¾÷ÁßÀÎ ¾²·¹µå");
+				System.out.println("ì“°ë ˆë“œ ì§„í–‰ì¤‘");
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

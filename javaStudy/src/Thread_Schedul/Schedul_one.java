@@ -12,7 +12,7 @@ public class Schedul_one implements Runnable{
 
 	@Override
 	public void run() {
-		System.out.println("Callable Class" + count + "번째 호출" + (time - System.currentTimeMillis()));
+		System.out.println("Callable Class" + count + "踰덉㎏" + (time - System.currentTimeMillis()));
 	}
 	
 	

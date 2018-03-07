@@ -13,7 +13,7 @@ public class Callable_one implements Callable<String>{
 	@Override
 	public String call() throws Exception {
 			System.out.println(String.format("Thread  == >> %s", txt));
-		return String.format("¹ÝÈ¯µÈ ÀÛ¾÷  == >> %s", txt);
+		return String.format("ë°˜í™˜ëœ ê°’  == >> %s", txt);
 	}
 
 }
