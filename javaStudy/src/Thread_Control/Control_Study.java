@@ -23,7 +23,6 @@ public class Control_Study {
 		boolean loop = true;
 		try {
 			while (loop) {
-				thread2.join();
 				System.out.println("Threading!");
 				Thread.sleep(500);
 			}
@@ -46,16 +45,23 @@ public class Control_Study {
 		
 		switch (control_command) {
 		case "start":
-			executor = Executors.newSingleThreadScheduledExecutor();
+			executor = Executors.newScheduledThreadPool(2);
 			executor.schedule(runnable1, 2L, TimeUnit.SECONDS);
+			System.out.println(executor.isTerminated());
 			break;
 		case "stop":
 			executor.shutdownNow();
+			System.out.println(executor.isTerminated());
 			break;
 		case "join":
-			thread2 = new Thread(runnable2);
+			executor.shutdownNow();
+			executor = Executors.newSingleThreadScheduledExecutor();
+			executor.execute(runnable2);
+			executor.schedule(runnable1, 2L, TimeUnit.SECONDS);
+			System.out.println(executor.isTerminated());
+			/*thread2 = new Thread(runnable2);
 			thread2.setPriority(8);
-			thread2.start();
+			thread2.start();*/
 		}
 	}
 
