@@ -7,7 +7,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class Callable_Study {
-	public String Study_class() {
+	public String Study() {
 		ExecutorService exector = Executors.newFixedThreadPool(2);
 		ArrayList<Future<String>> arraylist = new ArrayList<>();
 		
@@ -28,11 +28,11 @@ public class Callable_Study {
 		return buffer.toString();
 	}
 	
-	public class Callable_one implements Callable<String>{
+	private class Callable_one implements Callable<String>{
 		
 		String txt;
 
-		public Callable_one(String txt) {
+		private Callable_one(String txt) {
 			this.txt = txt;
 		}
 
