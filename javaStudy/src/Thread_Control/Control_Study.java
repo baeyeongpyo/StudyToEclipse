@@ -1,11 +1,15 @@
 package Thread_Control;
 
 import java.util.Scanner;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Control_Study {
 
 	Scanner scanner = new Scanner(System.in);
 	private Thread thread1, thread2;
+	ScheduledExecutorService executor;
 
 	public void Study() {
 		while (true) {
@@ -19,6 +23,7 @@ public class Control_Study {
 		boolean loop = true;
 		try {
 			while (loop) {
+				thread2.join();
 				System.out.println("Threading!");
 				Thread.sleep(500);
 			}
@@ -38,14 +43,14 @@ public class Control_Study {
 	};
 
 	private void Thread_Control_Method(String control_command) {
+		
 		switch (control_command) {
 		case "start":
-			thread1 = new Thread(runnable1);
-			thread1.setPriority(5);
-			thread1.start();
+			executor = Executors.newSingleThreadScheduledExecutor();
+			executor.schedule(runnable1, 2L, TimeUnit.SECONDS);
 			break;
 		case "stop":
-			thread1.interrupt();
+			executor.shutdownNow();
 			break;
 		case "join":
 			thread2 = new Thread(runnable2);
