@@ -1,6 +1,7 @@
 package Thread_Callable;
 
 import java.util.ArrayList;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -25,5 +26,20 @@ public class Callable_Study {
 		}
 		
 		return buffer.toString();
+	}
+	
+	public class Callable_one implements Callable<String>{
+		
+		String txt;
+
+		public Callable_one(String txt) {
+			this.txt = txt;
+		}
+
+		@Override
+		public String call() throws Exception {
+				System.out.println(String.format("Thread  == >> %s", txt));
+			return String.format("반환된 값  == >> %s", txt);
+		}
 	}
 }
