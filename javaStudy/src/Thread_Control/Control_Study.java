@@ -9,7 +9,7 @@ public class Control_Study {
 
 	Scanner scanner = new Scanner(System.in);
 	private Thread thread1, thread2;
-	ScheduledExecutorService executor;
+	ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
 	public void Study() {
 		while (true) {
@@ -59,9 +59,9 @@ public class Control_Study {
 			executor.execute(runnable2);
 			executor.schedule(runnable1, 2L, TimeUnit.SECONDS);
 			System.out.println(executor.isTerminated());
-			/*thread2 = new Thread(runnable2);
+			thread2 = new Thread(runnable2);
 			thread2.setPriority(8);
-			thread2.start();*/
+			thread2.start();
 		}
 	}
 
